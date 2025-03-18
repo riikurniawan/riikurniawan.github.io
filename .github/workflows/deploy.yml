@@ -35,4 +35,4 @@ jobs:
           git commit -m "Deploy Vite site"
           
           # Push ke gh-pages dengan token bawaan GitHub Actions
-          git push --force https://github.com/${{ github.repository }}.git gh-pages
+          git push --force gh-pages
