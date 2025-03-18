@@ -4,20 +4,14 @@ on:
   push:
     branches:
       - new-feat/migrate-reactjs
-  workflow_dispatch:
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v4
-
-      - name: Install Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 18
+        uses: actions/checkout@v3
 
       - name: Install Dependencies
         run: npm install
@@ -25,13 +19,20 @@ jobs:
       - name: Build Project
         run: npm run build
 
-      - name: Deploy to Branch 'build'
+      - name: Deploy to GitHub Pages
         run: |
-          git config --global user.name "Ari Kurniawan"
-          git config --global user.email "arikurnia2601@gmail.com"
-          git checkout --orphan build
-          git rm -rf .
-          mv dist/* .
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          
+          # Buat folder build-site sebagai tempat push ke gh-pages
+          mkdir -p build-site
+          cp -R dist/* build-site/
+          
+          cd build-site
+          git init
+          git checkout --orphan gh-pages
           git add .
-          git commit -m "Deploy build output"
-          git push --force origin build
+          git commit -m "Deploy Vite site"
+          
+          # Push ke gh-pages dengan token bawaan GitHub Actions
+          git push --force https://github.com/${{ github.repository }}.git gh-pages
