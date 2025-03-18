@@ -27,8 +27,8 @@ jobs:
 
       - name: Deploy to Branch 'build'
         run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "Ari Kurniawan"
+          git config --global user.email "arikurnia2601@gmail.com"
           git checkout --orphan build
           git rm -rf .
           mv dist/* .
