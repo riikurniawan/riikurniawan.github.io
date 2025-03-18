@@ -1,17 +1,22 @@
 import { useState } from "react";
 import ThemeToggle from "./components/ThemeToggle";
 
+import { Gallery, Item } from "react-photoswipe-gallery";
+import "photoswipe/dist/photoswipe.css";
+
 const projects = [
   {
     title: "Project Title 1",
     img: "https://picsum.photos/500/300?random=1",
-    description: "This is a short description of Project 1. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    description:
+      "This is a short description of Project 1. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     link: "https://example.com/project1",
   },
   {
     title: "Project Title 2",
     img: "https://picsum.photos/500/300?random=2",
-    description: "This is a short description of Project 2. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    description:
+      "This is a short description of Project 2. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     link: "https://example.com/project2",
   },
 ];
@@ -71,16 +76,27 @@ function App() {
         {selectedProject && (
           <dialog open className="modal modal-open">
             <div className="modal-box w-full max-w-2xl">
-              {/* Grid layout: 2 kolom di desktop, 1 kolom di mobile */}
               <div className="grid gap-4 lg:grid-cols-2">
-                {/* Kiri: Gambar */}
-                <img
-                  src={selectedProject.img}
-                  alt={selectedProject.title}
-                  className="rounded-lg w-full h-auto"
-                />
+                {/* Lightbox untuk gambar */}
+                <Gallery>
+                  <Item
+                    original={selectedProject.img}
+                    thumbnail={selectedProject.img}
+                    width="1200"
+                    height="800"
+                  >
+                    {({ ref, open }) => (
+                      <img
+                        ref={ref}
+                        src={selectedProject.img}
+                        alt={selectedProject.title}
+                        className="rounded-lg w-full h-auto cursor-pointer"
+                        onClick={open}
+                      />
+                    )}
+                  </Item>
+                </Gallery>
 
-                {/* Kanan: Deskripsi dengan scroll jika panjang */}
                 <div className="flex flex-col">
                   <h3 className="font-bold text-lg">{selectedProject.title}</h3>
                   <p className="py-2 max-h-[300px] overflow-y-auto pr-2">
@@ -132,9 +148,30 @@ function App() {
         {selectedCert && (
           <dialog open className="modal modal-open">
             <div className="modal-box">
-              <img src={selectedCert.img} alt={selectedCert.title} className="rounded-lg mb-3" />
+              {/* Lightbox untuk gambar */}
+              <Gallery>
+                <Item
+                  original={selectedCert.img}
+                  thumbnail={selectedCert.img}
+                  width="1200"
+                  height="800"
+                >
+                  {({ ref, open }) => (
+                    <img
+                      ref={ref}
+                      src={selectedCert.img}
+                      alt={selectedCert.title}
+                      className="rounded-lg mb-3 cursor-pointer"
+                      onClick={open}
+                    />
+                  )}
+                </Item>
+              </Gallery>
+
               <h3 className="font-bold text-lg">{selectedCert.title}</h3>
-              <p className="text-sm text-gray-500">Issued: {selectedCert.issuedDate}</p>
+              <p className="text-sm text-gray-500">
+                Issued: {selectedCert.issuedDate}
+              </p>
               <div className="modal-action">
                 {selectedCert.verificationLink && (
                   <a

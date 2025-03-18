@@ -1,8 +1,16 @@
 import { useState, useEffect } from "react";
 
 function ThemeToggle() {
-  const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
+  const getPreferredTheme = () => {
+    return (
+      localStorage.getItem("theme") ||
+      (window.matchMedia("(prefers-color-scheme: dark)").matches
+        ? "synthwave"
+        : "light")
+    );
+  };
 
+  const [theme, setTheme] = useState(getPreferredTheme);
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", theme);
     localStorage.setItem("theme", theme);
@@ -24,7 +32,7 @@ function ThemeToggle() {
 
         {/* Icon Matahari */}
         <svg
-          className="swap-off fill-current w-10 h-10"
+          className="swap-on fill-current w-10 h-10"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
         >
@@ -33,7 +41,7 @@ function ThemeToggle() {
 
         {/* Icon Bulan */}
         <svg
-          className="swap-on fill-current w-10 h-10"
+          className="swap-off fill-current w-10 h-10"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
         >
