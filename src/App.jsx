@@ -1,37 +1,80 @@
 import { useState } from "react";
 import ThemeToggle from "./components/ThemeToggle";
 
-import { Gallery, Item } from "react-photoswipe-gallery";
-import "photoswipe/dist/photoswipe.css";
+import LightGallery from "lightgallery/react";
+
+// import styles
+import "lightgallery/css/lightgallery.css";
+import "lightgallery/css/lg-zoom.css";
+import "lightgallery/css/lg-thumbnail.css";
+
+// import plugins if you need
+import lgThumbnail from "lightgallery/plugins/thumbnail";
+import lgZoom from "lightgallery/plugins/zoom";
 
 const projects = [
   {
-    title: "Project Title 1",
-    img: "https://picsum.photos/500/300?random=1",
+    title: "SMOE International Women Day ",
+    img: "/work/smoe_international_women_day/1.jpg",
     description:
-      "This is a short description of Project 1. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    link: "https://example.com/project1",
+      "A web app for managing guest attendance, door prize payments, and winner status at SMOE International Women's Day 2025.",
+    link: "#",
   },
   {
-    title: "Project Title 2",
-    img: "https://picsum.photos/500/300?random=2",
+    title: "SMOE Carnival",
+    img: "/work/smoe_carnival/1.jpg",
     description:
-      "This is a short description of Project 2. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    link: "https://example.com/project2",
+      "A web app for managing guest attendance, door prize payments, and winner status at SMOE Carnival 2025.",
+    link: "#",
+  },
+  {
+    title: "Seatrium HISS ",
+    img: "/work/seatrium_hiss/1.jpg",
+    description:
+      "A web-based HISS system for hazard identification and safety suggestions, enhancing HSE reporting and risk mitigation at Seatrium (Singapore).",
+    link: "#",
+  },
+  {
+    title: "SMOE Gala Dinner",
+    img: "/work/smoe_gala_dinner/1.jpg",
+    description:
+      "A web-based guest management system with QR code check-in, invitation validation, and random door prize drawing.",
+    link: "#",
+  },
+  {
+    title: "Supplier Oli Official Company Profile",
+    img: "/work/supplieroli_compro/1.jpg",
+    description:
+      "Company profile website for Official Oil Supplier and showcase high quality lubricant products",
+    link: "https://supplieroliofficial.com/",
+  },
+  {
+    title: "ShineSkin Beauty Clinic Patient Management System",
+    img: "/work/shineskin_patient_management_system/1.jpg",
+    description:
+      "A web-based clinic management system for Shineskin Beauty Clinic, featuring patient appointment tracking, staff management, and branch.",
+    link: "#",
+  },
+  {
+    title: "ShineSkin Beauty Clinic Company Profile",
+    img: "/work/shineskin_compro/1.jpg",
+    description:
+      "A company profile website for Shine Skin Beauty Clinic, providing information on treatments, services, and online consultation bookings.",
+    link: "https://shineskinbeautyclinic.com/",
   },
 ];
 
 const certifications = [
   {
-    title: "Certification 1",
-    img: "https://picsum.photos/500/300?random=3",
-    issuedDate: "January 2024",
-    verificationLink: "#",
+    title: "Red Hat Certified System Administrator",
+    img: "/certificates/rhcsa/1.webp",
+    issuedDate: "June 04, 2024",
+    verificationLink: "https://rhtapps.redhat.com/verify?certId=240-096-156",
   },
   {
-    title: "Certification 2",
-    img: "https://picsum.photos/500/300?random=4",
-    issuedDate: "March 2023",
+    title: "Junior Mobile Programmer",
+    img: "/certificates/junior_mobile_programmer/1.webp",
+    issuedDate: "October 07, 2022",
     verificationLink: "#",
   },
 ];
@@ -54,7 +97,7 @@ function App() {
         </p>
 
         {/* Featured Work */}
-        <h1 className="mt-10 font-bold text-lg">Featured Work</h1>
+        <h1 className="mt-10 font-bold text-lg">🧑🏻‍💻 Featured Works</h1>
         <div className="mt-5 grid grid-cols-1 gap-5 p-3 lg:grid-cols-2">
           {projects.map((project, index) => (
             <button
@@ -62,11 +105,13 @@ function App() {
               className="rounded-lg shadow-md hover:shadow-xl transition"
               onClick={() => setSelectedProject(project)}
             >
-              <img
-                src={project.img}
-                alt={project.title}
-                className="rounded-t-lg w-full h-[215px]"
-              />
+              <div className="rounded-t-[7px] w-full h-[150px] overflow-hidden relative flex justify-center items-center">
+                <img
+                  src={project.img}
+                  alt={project.title}
+                  className="rounded-t-[7px] w-full h-auto object-center absolute inset-0 z-0 xs:top-0 sm:-top-24 lg:top-0"
+                />
+              </div>
               <h1 className="ml-3 text-sm font-medium my-3">{project.title}</h1>
             </button>
           ))}
@@ -76,27 +121,20 @@ function App() {
         {selectedProject && (
           <dialog open className="modal modal-open">
             <div className="modal-box w-full max-w-2xl">
+              {/* Grid layout: 2 kolom di desktop, 1 kolom di mobile */}
               <div className="grid gap-4 lg:grid-cols-2">
-                {/* Lightbox images */}
-                <Gallery>
-                  <Item
-                    original={selectedProject.img}
-                    thumbnail={selectedProject.img}
-                    width="1200"
-                    height="800"
-                  >
-                    {({ ref, open }) => (
-                      <img
-                        ref={ref}
-                        src={selectedProject.img}
-                        alt={selectedProject.title}
-                        className="rounded-lg w-full h-auto cursor-pointer"
-                        onClick={open}
-                      />
-                    )}
-                  </Item>
-                </Gallery>
+                {/* Kiri: Gambar */}
+                <LightGallery speed={500} plugins={[lgThumbnail, lgZoom]}>
+                  <a href={selectedProject.img}>
+                    <img
+                      src={selectedProject.img}
+                      alt={selectedProject.title}
+                      className="rounded-lg w-full h-auto"
+                    />
+                  </a>
+                </LightGallery>
 
+                {/* Kanan: Deskripsi dengan scroll jika panjang */}
                 <div className="flex flex-col">
                   <h3 className="font-bold text-lg">{selectedProject.title}</h3>
                   <p className="py-2 max-h-[300px] overflow-y-auto pr-2">
@@ -106,14 +144,24 @@ function App() {
               </div>
 
               <div className="modal-action">
-                <a
-                  href={selectedProject.link}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="btn btn-primary"
+                <button
+                  onClick={() => {
+                    if (selectedProject.link && selectedProject.link !== "#") {
+                      window.open(selectedProject.link, "_blank");
+                    }
+                  }}
+                  className={`btn btn-primary ${
+                    !selectedProject.link || selectedProject.link === "#"
+                      ? "cursor-not-allowed opacity-50"
+                      : ""
+                  }`}
+                  disabled={
+                    !selectedProject.link || selectedProject.link === "#"
+                  }
                 >
                   Visit Project
-                </a>
+                </button>
+
                 <button
                   onClick={() => setSelectedProject(null)}
                   className="btn"
@@ -126,7 +174,7 @@ function App() {
         )}
 
         {/* Certification */}
-        <h1 className="mt-10 font-bold text-lg">Certification</h1>
+        <h1 className="mt-10 font-bold text-lg">🏆 Certifications</h1>
         <div className="mt-5 grid grid-cols-1 gap-5 p-3 lg:grid-cols-2">
           {certifications.map((cert, index) => (
             <button
@@ -134,11 +182,13 @@ function App() {
               className="rounded-lg shadow-md hover:shadow-xl transition"
               onClick={() => setSelectedCert(cert)}
             >
-              <img
-                src={cert.img}
-                alt={cert.title}
-                className="rounded-t-lg w-full h-[215px]"
-              />
+              <div className="rounded-t-[7px] w-full h-[150px] overflow-hidden relative flex justify-center items-center">
+                <img
+                  src={cert.img}
+                  alt={cert.title}
+                  className="rounded-t-[7px] w-full h-auto object-center absolute inset-0 z-0 xs:top-0 sm:-top-24 lg:top-0"
+                />
+              </div>
               <h1 className="ml-3 text-sm font-medium my-3">{cert.title}</h1>
             </button>
           ))}
@@ -148,40 +198,43 @@ function App() {
         {selectedCert && (
           <dialog open className="modal modal-open">
             <div className="modal-box">
-              {/* Lightbox images */}
-              <Gallery>
-                <Item
-                  original={selectedCert.img}
-                  thumbnail={selectedCert.img}
-                  width="1200"
-                  height="800"
-                >
-                  {({ ref, open }) => (
-                    <img
-                      ref={ref}
-                      src={selectedCert.img}
-                      alt={selectedCert.title}
-                      className="rounded-lg mb-3 cursor-pointer"
-                      onClick={open}
-                    />
-                  )}
-                </Item>
-              </Gallery>
-
+              <LightGallery speed={500} plugins={[lgThumbnail, lgZoom]}>
+                <a href={selectedCert.img}>
+                  <img
+                    src={selectedCert.img}
+                    alt={selectedCert.title}
+                    className="rounded-lg mb-3 object-contain"
+                  />
+                </a>
+              </LightGallery>
               <h3 className="font-bold text-lg">{selectedCert.title}</h3>
               <p className="text-sm text-gray-500">
                 Issued: {selectedCert.issuedDate}
               </p>
               <div className="modal-action">
                 {selectedCert.verificationLink && (
-                  <a
-                    href={selectedCert.verificationLink}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="btn btn-primary"
+                  <button
+                    onClick={() => {
+                      if (
+                        selectedCert.verificationLink &&
+                        selectedCert.verificationLink !== "#"
+                      ) {
+                        window.open(selectedCert.verificationLink, "_blank");
+                      }
+                    }}
+                    className={`btn btn-primary ${
+                      !selectedCert.verificationLink ||
+                      selectedCert.verificationLink === "#"
+                        ? "cursor-not-allowed opacity-50"
+                        : ""
+                    }`}
+                    disabled={
+                      !selectedCert.verificationLink ||
+                      selectedCert.verificationLink === "#"
+                    }
                   >
                     Verify Certificate
-                  </a>
+                  </button>
                 )}
                 <button onClick={() => setSelectedCert(null)} className="btn">
                   Close
@@ -192,18 +245,28 @@ function App() {
         )}
 
         {/* Skills & Tools */}
-        <h1 className="mt-10 font-bold text-lg">Skills & Tools</h1>
+        <h1 className="mt-10 font-bold text-lg">🎯 Skills & Tools</h1>
         <div className="flex flex-wrap gap-3 p-5">
-          {["PHP", "JavaScript", "Java", "Python", "Docker", "Git"].map(
-            (skill) => (
-              <span
-                key={skill}
-                className="badge badge-outline outline-1 outline-gray-400"
-              >
-                {skill}
-              </span>
-            )
-          )}
+          {[
+            "PHP",
+            "Codeigniter",
+            "JavaScript",
+            "Java",
+            "Python",
+            "Node.js",
+            "React.js",
+            "Next.js",
+            "Docker",
+            "Git",
+            "Bash",
+          ].map((skill) => (
+            <span
+              key={skill}
+              className="badge badge-outline outline-1 outline-gray-400"
+            >
+              {skill}
+            </span>
+          ))}
         </div>
 
         {/* Footer */}
