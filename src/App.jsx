@@ -81,11 +81,11 @@ const certifications = [
 const gallery = [
   {
     title:
-      "MSIB Infinite Learning Independent Study Program Batch 6 on IBM Academy : Hybrid Cloud & Red Hat Completion",
+      "Completion Certificate of MSIB Infinite Learning Independent Study Program Batch 6 - IBM Academy: Hybrid Cloud & Red Hat",
     img: "/gallery/1.jpg",
   },
   {
-    title: "PT SMOE Indonesia Internship Completion",
+    title: "Certificate of Internship Completion at Seatrium (PT. SMOE Indonesia)",
     img: "/gallery/2.jpg",
   },
 ];
