@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ThemeToggle from "./components/ThemeToggle";
 import LightGallery from "lightgallery/react";
 
@@ -80,12 +80,13 @@ const certifications = [
 
 const gallery = [
   {
-    title: "MSIB Infinite Learning Independent Study Program Batch 6 on IBM Academy : Hybrid Cloud & Red Hat Completion",
-    img: "/gallery/1.jpg"
+    title:
+      "MSIB Infinite Learning Independent Study Program Batch 6 on IBM Academy : Hybrid Cloud & Red Hat Completion",
+    img: "/gallery/1.jpg",
   },
   {
     title: "PT SMOE Indonesia Internship Completion",
-    img: "/gallery/2.jpg"
+    img: "/gallery/2.jpg",
   },
 ];
 
@@ -93,15 +94,36 @@ function App() {
   const [selectedProject, setSelectedProject] = useState(null);
   const [selectedCert, setSelectedCert] = useState(null);
 
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const projectParam = urlParams.get("project");
+    const certParam = urlParams.get("cert");
+
+    if (projectParam) {
+      const foundProject = projects.find(
+        (p) =>
+          p.title.toLowerCase().replace(/\s+/g, "_") ===
+          projectParam.toLowerCase()
+      );
+      if (foundProject) setSelectedProject(foundProject);
+    }
+
+    if (certParam) {
+      const foundCert = certifications.find(
+        (c) =>
+          c.title.toLowerCase().replace(/\s+/g, "_") === certParam.toLowerCase()
+      );
+      if (foundCert) setSelectedCert(foundCert);
+    }
+  }, []);
+
   return (
     <div className="flex justify-center text-base">
       <div className="justify-center pt-5 max-w-[650px] m-5">
         <ThemeToggle />
 
         <h1 className="font-bold text-[34px] mt-2 mb-2">Ari Kurniawan</h1>
-        <p className="text-[18px] mb-5">
-          👏 Hello, I am a Web Developer.
-        </p>
+        <p className="text-[18px] mb-5">👏 Hello, I am a Web Developer.</p>
         <p className="text-[18px]">
           I've been working as a web developer with 1 year of experience.
         </p>
