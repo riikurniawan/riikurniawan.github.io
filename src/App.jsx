@@ -339,6 +339,7 @@ function App() {
             "Docker",
             "Git",
             "Bash",
+            "VSCode"
           ].map((skill) => (
             <span
               key={skill}
