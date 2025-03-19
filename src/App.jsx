@@ -80,8 +80,12 @@ const certifications = [
 
 const gallery = [
   {
-    title: "MSIB Infinite Learning Independent Study Program Batch 6 on IBM Academy : Hybrid Cloud & Red Hat",
+    title: "MSIB Infinite Learning Independent Study Program Batch 6 on IBM Academy : Hybrid Cloud & Red Hat Completion",
     img: "/gallery/1.jpg"
+  },
+  {
+    title: "PT SMOE Indonesia Internship Completion",
+    img: "/gallery/2.jpg"
   },
 ];
 
@@ -266,7 +270,7 @@ function App() {
               <img
                 src={item.img}
                 alt={item.title}
-                className="rounded-[7px] w-full h-auto object-center absolute inset-0 z-0 xs:top-0 sm:-top-24 lg:top-0"
+                className="lg:h-full w-full object-center absolute inset-0 z-0 xs:top-0 lg:top-0"
               />
             </a>
           ))}
