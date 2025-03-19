@@ -176,6 +176,7 @@ function App() {
               </div>
 
               <div className="modal-action">
+                <div className="grid gap-4 lg:grid-cols-2"></div>
                 {/* Copy Link Button */}
                 <button
                   onClick={() => {
@@ -185,7 +186,7 @@ function App() {
                     navigator.clipboard.writeText(url);
                     alert("Link copied to clipboard!");
                   }}
-                  className="btn btn-outline"
+                  className="btn btn-outline block"
                 >
                   Copy Link
                 </button>
@@ -257,46 +258,48 @@ function App() {
                 Issued: {selectedCert.issuedDate}
               </p>
               <div className="modal-action">
-                {/* Copy Link Button */}
-                <button
-                  onClick={() => {
-                    const url = `${
-                      window.location.origin
-                    }?cert=${selectedCert.title.replace(/\s+/g, "_")}`;
-                    navigator.clipboard.writeText(url);
-                    alert("Link copied to clipboard!");
-                  }}
-                  className="btn btn-outline"
-                >
-                  Copy Link
-                </button>
-                {selectedCert.verificationLink && (
+                <div className="grid grid-cols-2 gap-4 lg:grid-cols-3">
+                  {/* Copy Link Button */}
                   <button
                     onClick={() => {
-                      if (
-                        selectedCert.verificationLink &&
-                        selectedCert.verificationLink !== "#"
-                      ) {
-                        window.open(selectedCert.verificationLink, "_blank");
-                      }
+                      const url = `${
+                        window.location.origin
+                      }?cert=${selectedCert.title.replace(/\s+/g, "_")}`;
+                      navigator.clipboard.writeText(url);
+                      alert("Link copied to clipboard!");
                     }}
-                    className={`btn btn-primary ${
-                      !selectedCert.verificationLink ||
-                      selectedCert.verificationLink === "#"
-                        ? "cursor-not-allowed opacity-50"
-                        : ""
-                    }`}
-                    disabled={
-                      !selectedCert.verificationLink ||
-                      selectedCert.verificationLink === "#"
-                    }
+                    className="btn btn-outline"
                   >
-                    Verify Certificate
+                    Copy Link
                   </button>
-                )}
-                <button onClick={() => setSelectedCert(null)} className="btn">
-                  Close
-                </button>
+                  {selectedCert.verificationLink && (
+                    <button
+                      onClick={() => {
+                        if (
+                          selectedCert.verificationLink &&
+                          selectedCert.verificationLink !== "#"
+                        ) {
+                          window.open(selectedCert.verificationLink, "_blank");
+                        }
+                      }}
+                      className={`btn btn-primary ${
+                        !selectedCert.verificationLink ||
+                        selectedCert.verificationLink === "#"
+                          ? "cursor-not-allowed opacity-50"
+                          : ""
+                      }`}
+                      disabled={
+                        !selectedCert.verificationLink ||
+                        selectedCert.verificationLink === "#"
+                      }
+                    >
+                      Verify Certificate
+                    </button>
+                  )}
+                  <button onClick={() => setSelectedCert(null)} className="btn">
+                    Close
+                  </button>
+                </div>
               </div>
             </div>
           </dialog>
@@ -339,7 +342,7 @@ function App() {
             "Docker",
             "Git",
             "Bash",
-            "VSCode"
+            "VSCode",
           ].map((skill) => (
             <span
               key={skill}
