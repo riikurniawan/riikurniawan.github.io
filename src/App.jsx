@@ -122,11 +122,27 @@ function App() {
       <div className="justify-center pt-5 max-w-[650px] m-5">
         <ThemeToggle />
 
-        <h1 className="font-bold text-[34px] mt-2 mb-2">Ari Kurniawan</h1>
+        <a href="/" className="font-bold text-[34px] mt-2 mb-2">
+          Ari Kurniawan
+        </a>
         <p className="text-[18px] mb-5">👏 Hello, I am a Web Developer.</p>
         <p className="text-[18px]">
           I've been working as a web developer with 1 year of experience.
         </p>
+
+        <button
+          className="btn btn-soft btn-primary mt-5"
+          onClick={() => {
+            const link = document.createElement("a");
+            link.href = "/Resume_Ari Kurniawan.pdf";
+            link.download = "Resume_Ari Kurniawan.pdf";
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+          }}
+        >
+          My Resume
+        </button>
 
         {/* Featured Work */}
         <h1 className="mt-10 font-bold text-lg">🧑🏻‍💻 Featured Works</h1>
