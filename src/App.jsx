@@ -77,7 +77,7 @@ function App() {
           <dialog open className="modal modal-open">
             <div className="modal-box w-full max-w-2xl">
               <div className="grid gap-4 lg:grid-cols-2">
-                {/* Lightbox untuk gambar */}
+                {/* Lightbox images */}
                 <Gallery>
                   <Item
                     original={selectedProject.img}
@@ -148,7 +148,7 @@ function App() {
         {selectedCert && (
           <dialog open className="modal modal-open">
             <div className="modal-box">
-              {/* Lightbox untuk gambar */}
+              {/* Lightbox images */}
               <Gallery>
                 <Item
                   original={selectedCert.img}
