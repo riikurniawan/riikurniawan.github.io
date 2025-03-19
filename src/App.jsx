@@ -44,7 +44,7 @@ const projects = [
     title: "Supplier Oli Official Company Profile",
     img: "/work/supplieroli_compro/1.jpg",
     description:
-      "Company profile website for Official Oil Supplier and showcase high quality lubricant products",
+      "Company profile website for Official Oil Supplier and showcase high quality lubricant products.",
     link: "https://supplieroliofficial.com/",
   },
   {
