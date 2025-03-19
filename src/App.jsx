@@ -27,7 +27,7 @@ const projects = [
     link: "#",
   },
   {
-    title: "Seatrium HISS ",
+    title: "Seatrium HISS",
     img: "/work/seatrium_hiss/1.jpg",
     description:
       "A web-based HISS system for hazard identification and safety suggestions, enhancing HSE reporting and risk mitigation at Seatrium (Singapore).",
