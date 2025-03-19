@@ -1,6 +1,5 @@
 import { useState } from "react";
 import ThemeToggle from "./components/ThemeToggle";
-
 import LightGallery from "lightgallery/react";
 
 // import styles
@@ -79,6 +78,13 @@ const certifications = [
   },
 ];
 
+const gallery = [
+  {
+    title: "MSIB Infinite Learning Independent Study Program Batch 6 on IBM Academy : Hybrid Cloud & Red Hat",
+    img: "/gallery/1.jpg"
+  },
+];
+
 function App() {
   const [selectedProject, setSelectedProject] = useState(null);
   const [selectedCert, setSelectedCert] = useState(null);
@@ -90,7 +96,7 @@ function App() {
 
         <h1 className="font-bold text-[34px] mt-2 mb-2">Ari Kurniawan</h1>
         <p className="text-[18px] mb-5">
-          👏 Hello, my name is Ari Kurniawan. I am a Web Developer.
+          👏 Hello, I am a Web Developer.
         </p>
         <p className="text-[18px]">
           I've been working as a web developer with 1 year of experience.
@@ -243,6 +249,28 @@ function App() {
             </div>
           </dialog>
         )}
+
+        {/* Gallery */}
+        <h1 className="mt-10 font-bold text-lg">🖼️ Gallery</h1>
+        <LightGallery
+          speed={500}
+          plugins={[lgThumbnail, lgZoom]}
+          elementClassNames="mt-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 p-3"
+        >
+          {gallery.map((item, index) => (
+            <a
+              key={index}
+              href={item.img}
+              className="rounded-[7px] w-full h-[150px] shadow-md hover:shadow-xl transition overflow-hidden relative flex justify-center items-center"
+            >
+              <img
+                src={item.img}
+                alt={item.title}
+                className="rounded-[7px] w-full h-auto object-center absolute inset-0 z-0 xs:top-0 sm:-top-24 lg:top-0"
+              />
+            </a>
+          ))}
+        </LightGallery>
 
         {/* Skills & Tools */}
         <h1 className="mt-10 font-bold text-lg">🎯 Skills & Tools</h1>
