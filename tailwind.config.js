@@ -1,11 +1,13 @@
-module.exports = {
-    content: ["./*.{html,js}"], // Sesuaikan path dengan struktur proyekmu
+/** @type {import('tailwindcss').Config} */
+export default {
+    content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"], // Sesuaikan path
     theme: {
-      extend: {},
+      extend: {
+        fontFamily: {
+          rubik: ["Rubik", "sans-serif"],
+        },
+      },
     },
-    plugins: [require("daisyui")],
-    daisyui: {
-      themes: ["light", "dark"], // Menambahkan tema
-    },
+    plugins: [],
   };
   
