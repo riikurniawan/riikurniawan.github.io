@@ -13,7 +13,7 @@ import lgZoom from "lightgallery/plugins/zoom";
 
 const projects = [
   {
-    title: "SMOE International Women Day ",
+    title: "SMOE International Women Day",
     img: "/work/smoe_international_women_day/1.jpg",
     description:
       "A web app for managing guest attendance, door prize payments, and winner status at SMOE International Women's Day 2025.",
@@ -176,6 +176,19 @@ function App() {
               </div>
 
               <div className="modal-action">
+                {/* Copy Link Button */}
+                <button
+                  onClick={() => {
+                    const url = `${
+                      window.location.origin
+                    }?project=${selectedProject.title.replace(/\s+/g, "_")}`;
+                    navigator.clipboard.writeText(url);
+                    alert("Link copied to clipboard!");
+                  }}
+                  className="btn btn-outline"
+                >
+                  Copy Link
+                </button>
                 <button
                   onClick={() => {
                     if (selectedProject.link && selectedProject.link !== "#") {
@@ -244,6 +257,19 @@ function App() {
                 Issued: {selectedCert.issuedDate}
               </p>
               <div className="modal-action">
+                {/* Copy Link Button */}
+                <button
+                  onClick={() => {
+                    const url = `${
+                      window.location.origin
+                    }?cert=${selectedCert.title.replace(/\s+/g, "_")}`;
+                    navigator.clipboard.writeText(url);
+                    alert("Link copied to clipboard!");
+                  }}
+                  className="btn btn-outline"
+                >
+                  Copy Link
+                </button>
                 {selectedCert.verificationLink && (
                   <button
                     onClick={() => {
