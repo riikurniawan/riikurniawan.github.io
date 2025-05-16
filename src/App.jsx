@@ -156,6 +156,7 @@ function App() {
               <div className="rounded-t-[7px] w-full h-[150px] overflow-hidden relative flex justify-center items-center">
                 <img
                   src={project.img}
+                  loading="lazy"
                   alt={project.title}
                   className="rounded-t-[7px] w-full h-auto object-center absolute inset-0 z-0 xs:top-0 sm:-top-24 lg:top-0"
                 />
@@ -176,6 +177,7 @@ function App() {
                   <a href={selectedProject.img}>
                     <img
                       src={selectedProject.img}
+                      loading="lazy"
                       alt={selectedProject.title}
                       className="rounded-lg w-full h-auto"
                     />
@@ -247,6 +249,7 @@ function App() {
               <div className="rounded-t-[7px] w-full h-[150px] overflow-hidden relative flex justify-center items-center">
                 <img
                   src={cert.img}
+                  loading="lazy"
                   alt={cert.title}
                   className="rounded-t-[7px] w-full h-auto object-center absolute inset-0 z-0 xs:top-0 sm:-top-24 lg:top-0"
                 />
