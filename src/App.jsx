@@ -14,49 +14,49 @@ import lgZoom from "lightgallery/plugins/zoom";
 const projects = [
   {
     title: "SMOE International Women Day",
-    img: "/work/smoe_international_women_day/1.jpg",
+    img: "https://ik.imagekit.io/ariikurniawan/arikurniawan_portfolio/work/smoe_carnival/1.jpg?updatedAt=1793284333431",
     description:
       "A web app for managing guest attendance, door prize payments, and winner status at SMOE International Women's Day 2025.",
     link: "#",
   },
   {
     title: "SMOE Carnival",
-    img: "/work/smoe_carnival/1.jpg",
+    img: "https://ik.imagekit.io/ariikurniawan/arikurniawan_portfolio/work/shineskin_patient_management_system/1.jpg?updatedAt=1793284332994",
     description:
       "A web app for managing guest attendance, door prize payments, and winner status at SMOE Carnival 2025.",
     link: "#",
   },
   {
     title: "Seatrium HISS",
-    img: "/work/seatrium_hiss/1.jpg",
+    img: "https://ik.imagekit.io/ariikurniawan/arikurniawan_portfolio/work/seatrium_hiss/1.jpg?updatedAt=1793284333639",
     description:
       "A web-based HISS system for hazard identification and safety suggestions, enhancing HSE reporting and risk mitigation at Seatrium (Singapore).",
     link: "#",
   },
   {
     title: "SMOE Gala Dinner",
-    img: "/work/smoe_gala_dinner/1.jpg",
+    img: "https://ik.imagekit.io/ariikurniawan/arikurniawan_portfolio/work/smoe_gala_dinner/1.jpg?updatedAt=1793284333395",
     description:
       "A web-based guest management system with QR code check-in, invitation validation, and random door prize drawing.",
     link: "#",
   },
   {
     title: "Supplier Oli Official Company Profile",
-    img: "/work/supplieroli_compro/1.jpg",
+    img: "https://ik.imagekit.io/ariikurniawan/arikurniawan_portfolio/work/supplieroli_compro/1.jpg?updatedAt=1793284333676",
     description:
       "Company profile website for Official Oil Supplier and showcase high quality lubricant products.",
     link: "https://supplieroliofficial.com/",
   },
   {
     title: "ShineSkin Beauty Clinic Patient Management System",
-    img: "/work/shineskin_patient_management_system/1.jpg",
+    img: "https://ik.imagekit.io/ariikurniawan/arikurniawan_portfolio/work/shineskin_patient_management_system/1.jpg?updatedAt=1793284332994",
     description:
       "A web-based clinic management system for Shineskin Beauty Clinic, featuring patient appointment tracking, staff management, and branch.",
     link: "#",
   },
   {
     title: "ShineSkin Beauty Clinic Company Profile",
-    img: "/work/shineskin_compro/1.jpg",
+    img: "https://ik.imagekit.io/ariikurniawan/arikurniawan_portfolio/work/shineskin_compro/1.jpg?updatedAt=1793284333031",
     description:
       "A company profile website for Shine Skin Beauty Clinic, providing information on treatments, services, and online consultation bookings.",
     link: "https://shineskinbeautyclinic.com/",
@@ -66,13 +66,13 @@ const projects = [
 const certifications = [
   {
     title: "Red Hat Certified System Administrator",
-    img: "/certificates/rhcsa/1.webp",
+    img: "https://ik.imagekit.io/ariikurniawan/arikurniawan_portfolio/certificates/rhcsa/1.webp?updatedAt=1793284319890",
     issuedDate: "June 04, 2024",
     verificationLink: "https://rhtapps.redhat.com/verify?certId=240-096-156",
   },
   {
     title: "Junior Mobile Programmer",
-    img: "/certificates/junior_mobile_programmer/1.webp",
+    img: "https://ik.imagekit.io/ariikurniawan/arikurniawan_portfolio/certificates/junior_mobile_programmer/1.webp?updatedAt=1793284335780",
     issuedDate: "October 07, 2022",
     verificationLink: "#",
   },
@@ -82,11 +82,11 @@ const gallery = [
   {
     title:
       "Completion Certificate of MSIB Infinite Learning Independent Study Program Batch 6 - IBM Academy: Hybrid Cloud & Red Hat",
-    img: "/gallery/1.jpg",
+    img: "https://ik.imagekit.io/ariikurniawan/arikurniawan_portfolio/gallery/1.jpg?updatedAt=1793284327911",
   },
   {
     title: "Certificate of Internship Completion at Seatrium (PT. SMOE Indonesia)",
-    img: "/gallery/2.jpg",
+    img: "https://ik.imagekit.io/ariikurniawan/arikurniawan_portfolio/gallery/2.jpg?updatedAt=1793284333223",
   },
 ];
 
@@ -117,6 +117,17 @@ function App() {
     }
   }, []);
 
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === "Escape") {
+        setSelectedProject(null);
+        setSelectedCert(null);
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, []);
+
   return (
     <div className="flex justify-center text-base">
       <div className="justify-center pt-5 max-w-[650px] m-5">
@@ -125,16 +136,16 @@ function App() {
         <a href="/" className="font-bold text-[34px] mt-2 mb-2">
           Ari Kurniawan
         </a>
-        <p className="text-[18px] mb-5">👏 Hello, I am a Web Developer.</p>
+        <p className="text-[18px] mb-5">Web Developer | DevOps</p>
         <p className="text-[18px]">
-          I've been working as a web developer with 1 year of experience.
+          A passionate Web Developer and DevOps enthusiast who enjoys building practical web applications, automating workflows, and managing server environments. Always eager to learn new technologies and create reliable, efficient, and user friendly solutions.
         </p>
 
         <button
           className="btn btn-soft btn-primary mt-5"
           onClick={() => {
             const link = document.createElement("a");
-            link.href = "/Resume_Ari Kurniawan.pdf";
+            link.href = "https://ik.imagekit.io/ariikurniawan/arikurniawan_portfolio/attachments/Resume_Ari%20Kurniawan.pdf?updatedAt=1793284623856";
             link.download = "Resume_Ari Kurniawan.pdf";
             document.body.appendChild(link);
             link.click();
@@ -150,7 +161,7 @@ function App() {
           {projects.map((project, index) => (
             <button
               key={index}
-              className="rounded-lg shadow-md hover:shadow-xl transition"
+              className="rounded-lg border border-base-300 shadow-md hover:shadow-xl transition flex flex-col"
               onClick={() => setSelectedProject(project)}
             >
               <div className="rounded-t-[7px] w-full h-[150px] overflow-hidden relative flex justify-center items-center">
@@ -161,7 +172,7 @@ function App() {
                   className="rounded-t-[7px] w-full h-auto object-center absolute inset-0 z-0 xs:top-0 sm:-top-24 lg:top-0"
                 />
               </div>
-              <h1 className="ml-3 text-sm font-medium my-3">{project.title}</h1>
+              <h1 className="ml-3 mr-3 text-sm font-medium my-3 line-clamp-2">{project.title}</h1>
             </button>
           ))}
         </div>
@@ -216,12 +227,9 @@ function App() {
                   }}
                   className={`btn btn-primary ${
                     !selectedProject.link || selectedProject.link === "#"
-                      ? "cursor-not-allowed opacity-50"
+                      ? "opacity-50 cursor-not-allowed pointer-events-auto"
                       : ""
                   }`}
-                  disabled={
-                    !selectedProject.link || selectedProject.link === "#"
-                  }
                 >
                   Visit Project
                 </button>
@@ -243,7 +251,7 @@ function App() {
           {certifications.map((cert, index) => (
             <button
               key={index}
-              className="rounded-lg shadow-md hover:shadow-xl transition"
+              className="rounded-lg border border-base-300 shadow-md hover:shadow-xl transition flex flex-col"
               onClick={() => setSelectedCert(cert)}
             >
               <div className="rounded-t-[7px] w-full h-[150px] overflow-hidden relative flex justify-center items-center">
@@ -254,7 +262,7 @@ function App() {
                   className="rounded-t-[7px] w-full h-auto object-center absolute inset-0 z-0 xs:top-0 sm:-top-24 lg:top-0"
                 />
               </div>
-              <h1 className="ml-3 text-sm font-medium my-3">{cert.title}</h1>
+              <h1 className="ml-3 mr-3 text-sm font-medium my-3 line-clamp-2">{cert.title}</h1>
             </button>
           ))}
         </div>
@@ -273,7 +281,7 @@ function App() {
                 </a>
               </LightGallery>
               <h3 className="font-bold text-lg">{selectedCert.title}</h3>
-              <p className="text-sm text-gray-500">
+              <p className="text-sm opacity-60">
                 Issued: {selectedCert.issuedDate}
               </p>
               <div className="modal-action">
@@ -304,13 +312,9 @@ function App() {
                       className={`btn btn-primary ${
                         !selectedCert.verificationLink ||
                         selectedCert.verificationLink === "#"
-                          ? "cursor-not-allowed opacity-50"
+                          ? "opacity-50 cursor-not-allowed pointer-events-auto"
                           : ""
                       }`}
-                      disabled={
-                        !selectedCert.verificationLink ||
-                        selectedCert.verificationLink === "#"
-                      }
                     >
                       Verify Certificate
                     </button>
@@ -335,7 +339,7 @@ function App() {
             <a
               key={index}
               href={item.img}
-              className="rounded-[7px] w-full h-[150px] shadow-md hover:shadow-xl transition overflow-hidden relative flex justify-center items-center"
+              className="rounded-[7px] border border-base-300 w-full h-[150px] shadow-md hover:shadow-xl transition overflow-hidden relative flex justify-center items-center"
             >
               <img
                 src={item.img}
@@ -358,14 +362,14 @@ function App() {
             "Node.js",
             "React.js",
             "Next.js",
-            "Docker",
+            "Podman",
             "Git",
             "Bash",
             "VSCode",
           ].map((skill) => (
             <span
               key={skill}
-              className="badge badge-outline outline-1 outline-gray-400"
+              className="badge badge-outline border-base-content/40 text-base-content"
             >
               {skill}
             </span>
